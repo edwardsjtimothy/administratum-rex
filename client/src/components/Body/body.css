@@ -1,3 +1,7 @@
 .body-wrap {
     margin-top: 40px 
 }
+
+.left-align {
+    float: left;
+}
