@@ -13,13 +13,13 @@
     clear: left;
 }
 
-.sub-nav {
+/* .sub-nav {
     /* border: 1px solid white; */
-}
+/* } */
 
 .nav-user {
     float: left;
-    margin-bottom: 0px;
+    margin-bottom: 2px;
     line-height: 0.9;
 }
 
@@ -31,4 +31,6 @@
 .nav-btn {
     border-radius: 5px 5px 0px 0px;
     margin: 0px 0px 0px 2px;
+    background: rgba(46, 49, 49, .7);
+    color: whitesmoke;
 }

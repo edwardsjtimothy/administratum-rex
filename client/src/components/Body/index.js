@@ -12,9 +12,9 @@ export default class Body extends Component {
                         <div className="sub-nav">
                             <h1 className="nav-user">Username</h1>
                             <div className="nav-tabs">
-                                <button className="nav-btn btn btn-dark">stuff</button>
-                                <button className="nav-btn btn btn-dark">things</button>
-                                <button className="nav-btn btn btn-dark">extra</button>
+                                <button className="nav-btn btn">stuff</button>
+                                <button className="nav-btn btn">things</button>
+                                <button className="nav-btn btn">extra</button>
                             </div>
                         </div>
                         <div className="clear-float"></div>
