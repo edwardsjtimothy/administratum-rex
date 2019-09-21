@@ -10,7 +10,7 @@ export default class Body extends Component {
                     <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                     <div className="col-12 col-sm-12 col-md-10 col-lg-10">
                         <ul className="nav nav-tabs justify-content-end">
-                        <h1 className="left-align">Tim</h1>
+                        <h1>Username</h1>
                             <li className="nav-item">
                                 <a className="nav-link active" href="#">Active</a>
                             </li>
@@ -24,6 +24,10 @@ export default class Body extends Component {
                                 <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                             </li>
                         </ul>
+                        <div>
+                            <p>stats go here</p>
+                        </div>
+
                     </div>
                     <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                 </div>
