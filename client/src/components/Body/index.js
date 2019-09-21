@@ -9,25 +9,20 @@ export default class Body extends Component {
                 <div className="row">
                     <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                     <div className="col-12 col-sm-12 col-md-10 col-lg-10">
-                        <ul className="nav nav-tabs justify-content-end">
-                        <h1>Username</h1>
-                            <li className="nav-item">
-                                <a className="nav-link active" href="#">Active</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Link</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link" href="#">Link</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-                            </li>
-                        </ul>
-                        <div>
-                            <p>stats go here</p>
+                        <div className="sub-nav">
+                            <h1 className="nav-user">Username</h1>
+                            <div className="nav-tabs">
+                                <button className="nav-btn btn btn-dark">stuff</button>
+                                <button className="nav-btn btn btn-dark">things</button>
+                                <button className="nav-btn btn btn-dark">extra</button>
+                            </div>
                         </div>
-
+                        <div className="clear-float"></div>
+                        <div className="body-con">
+                            <div>
+                                <p>stats go here</p>
+                            </div>
+                        </div>
                     </div>
                     <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                 </div>
