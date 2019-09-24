@@ -8,7 +8,7 @@ export default function index(props) {
                     <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                     <div className="col-12 col-sm-12 col-md-10 col-lg-10">
                         <div className="sub-nav">
-                            <h1 className="nav-user">{props.user}</h1>
+                            <h1 className="nav-user">Username</h1>
                             <div className="nav-tabs">
                                 <button className="nav-btn btn">stuff</button>
                                 <button className="nav-btn btn">things</button>
