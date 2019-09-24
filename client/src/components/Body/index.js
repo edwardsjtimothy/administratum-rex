@@ -10,7 +10,7 @@ export default function index(props) {
                         <div className="sub-nav">
                             <h1 className="nav-user">Username</h1>
                             <div className="nav-tabs">
-                                <button className="nav-btn btn">stuff</button>
+                                <button className="nav-btn btn">Overview</button>
                                 <button className="nav-btn btn">things</button>
                                 <button className="nav-btn btn">extra</button>
                             </div>
