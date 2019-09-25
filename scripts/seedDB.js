@@ -37,9 +37,9 @@ const statsSeed = [
   }
 ];
 
-db.playerStats
+db.Stats
   .remove({})
-  .then(() => db.playerStats.collection.insertMany(statsSeed))
+  .then(() => db.Stats.collection.insertMany(statsSeed))
   .then(data => {
     console.log(data.result.n + " records inserted!");
     process.exit(0);
