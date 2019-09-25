@@ -1,8 +1,7 @@
-
-import "./body.css";
-
 import React, { Component } from 'react'
 import Axios from "axios";
+import "./body.css";
+import Card from "../Card"
 
 export default class Body extends Component {
     state = {
@@ -10,10 +9,11 @@ export default class Body extends Component {
     }
 
     componentDidMount () {
+
         Axios.get("/api/stats")
         .then(res=> {
-            console.log(res)
-            this.setState({statArr: res.data})
+            let data = res.data;    
+            this.setState({data})
         })
     }
     render() {
@@ -25,15 +25,15 @@ export default class Body extends Component {
                         <div className="sub-nav">
                             <h1 className="nav-user">Tim</h1>
                             <div className="nav-tabs">
-                                <button className="nav-btn btn">Overview</button>
-                                <button className="nav-btn btn">things</button>
-                                <button className="nav-btn btn">extra</button>
+                                <button className="nav-btn btn">Your Stats</button>
+                                <button className="nav-btn btn">Search</button>
+                                <button className="nav-btn btn">Add New</button>
                             </div>
                         </div>
                         <div className="clear-float"></div>
                         <div className="body-con">
                             <div>
-                                
+                                <Card stats={this.state.statArr}/>
 
                             </div>
                         </div>

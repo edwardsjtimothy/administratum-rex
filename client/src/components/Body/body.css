@@ -8,7 +8,7 @@
     background: rgba(46, 49, 49, .7);
     box-shadow: 5px 10px 10px rgb(21, 32, 21);
     height: 80vh;
-    text-align: center;
+    padding: 10px 0px 0px 10px;
 }
 
 .clear-float {
