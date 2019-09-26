@@ -5,16 +5,28 @@ import Card from "../Card"
 
 export default class Body extends Component {
     state = {
-
     }
 
     componentDidMount () {
 
         Axios.get("/api/stats")
         .then(res=> {
-            let data = res.data;    
-            this.setState({data})
+            let data = res.data; 
+            console.log(data);   
+            // this.setState({ data });
+            
+            this.setState({
+                    player: data[0].player,
+                    faction: data[0].faction,
+                    sub: data[0].sub,
+                    wins: data[0].wins,
+                    loses: data[0].loses, 
+                  })
+        
         })
+
+       
+
     }
     render() {
         return (
@@ -33,7 +45,13 @@ export default class Body extends Component {
                         <div className="clear-float"></div>
                         <div className="body-con">
                             <div>
-                                <Card stats={this.state.statArr}/>
+                                {/* map goes here */}
+                                <Card 
+                                player={this.state.player} 
+                                faction={this.state.faction} 
+                                sub={this.state.sub} 
+                                wins={this.state.wins} 
+                                loses={this.state.loses} />
 
                             </div>
                         </div>
