@@ -21,13 +21,26 @@ export default class Body extends Component {
                     sub: data[0].sub,
                     wins: data[0].wins,
                     losses: data[0].losses, 
-                  })
+                  });
         
-        })
+        });
+    };
 
-       
+    tabFocus() {
+        const navTabs = document.querySelector(".nav-tabs");
+        navTabs.addEventListener("click", select, false);
 
-    }
+       function select(e) {
+
+            if (e.target !== e.currentTarget) {
+                let clicked = e.target.id;
+                document.getElementById(clicked).style.background = "rgba(46, 49, 49, .9)"
+            }
+            e.stopPropagation();
+        }
+
+    } 
+
     render() {
         return (
             <div className="body-wrap container">
@@ -37,9 +50,9 @@ export default class Body extends Component {
                         <div className="sub-nav">
                             <h1 className="nav-user">Tim</h1>
                             <div className="nav-tabs">
-                                <button className="nav-btn btn">Leaderboard</button>
-                                <button className="nav-btn btn">Your Stats</button>
-                                <button className="nav-btn btn">Add New</button>
+                                <button className="nav-btn btn" id="tab-1" onClick={this.tabFocus}>Leaderboard</button>
+                                <button className="nav-btn btn" id="tab-2" onClick={this.tabFocus}>Your Stats</button>
+                                <button className="nav-btn btn" id="tab-3" onClick={this.tabFocus}>Add New</button>
                             </div>
                         </div>
                         <div className="clear-float"></div>
