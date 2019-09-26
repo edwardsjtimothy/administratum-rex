@@ -12,28 +12,28 @@ const statsSeed = [
     faction: "Chaos",
     sub: "Thousand Sons",
     wins: 3,
-    loses: 7,
+    losses: 7,
   },
   {
     player: "Alexa",
     faction: "Aeldari",
     sub: "Ulthwe",
     wins: 7,
-    loses: 3,
+    losses: 3,
   },
   {
     player: "John",
     faction: "Imperium",
     sub: "Ultramarines",
     wins: 8,
-    loses: 2,
+    losses: 2,
   },
   {
     player: "Asa",
     faction: "Tau",
     sub: "Tau Sept",
     wins: 6,
-    loses: 4,
+    losses: 4,
   }
 ];
 

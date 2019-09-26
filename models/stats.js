@@ -7,7 +7,7 @@ const playerStats = new Schema({
   sub: { type: String, required: true },
   victory: {type: Boolean, required: false},
   wins: {type: Number, required: false},
-  loses: {type: Number, required: false },
+  losses: {type: Number, required: false },
   date: { type: Date, default: Date.now }
 });
 

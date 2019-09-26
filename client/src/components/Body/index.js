@@ -20,7 +20,7 @@ export default class Body extends Component {
                     faction: data[0].faction,
                     sub: data[0].sub,
                     wins: data[0].wins,
-                    loses: data[0].loses, 
+                    losses: data[0].losses, 
                   })
         
         })
@@ -37,8 +37,8 @@ export default class Body extends Component {
                         <div className="sub-nav">
                             <h1 className="nav-user">Tim</h1>
                             <div className="nav-tabs">
+                                <button className="nav-btn btn">Leaderboard</button>
                                 <button className="nav-btn btn">Your Stats</button>
-                                <button className="nav-btn btn">Search</button>
                                 <button className="nav-btn btn">Add New</button>
                             </div>
                         </div>
@@ -51,7 +51,7 @@ export default class Body extends Component {
                                 faction={this.state.faction} 
                                 sub={this.state.sub} 
                                 wins={this.state.wins} 
-                                loses={this.state.loses} />
+                                losses={this.state.losses} />
 
                             </div>
                         </div>
