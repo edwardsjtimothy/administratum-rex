@@ -5,6 +5,7 @@ import Card from "../Card"
 
 export default class Body extends Component {
     state = {
+        data: []
     }
 
     componentDidMount () {
@@ -13,16 +14,7 @@ export default class Body extends Component {
         .then(res=> {
             let data = res.data; 
             console.log(data);   
-            // this.setState({ data });
-            
-            this.setState({
-                    player: data[0].player,
-                    faction: data[0].faction,
-                    sub: data[0].sub,
-                    wins: data[0].wins,
-                    losses: data[0].losses, 
-                  });
-        
+            this.setState({ data });
         });
     };
 
@@ -58,13 +50,15 @@ export default class Body extends Component {
                         <div className="clear-float"></div>
                         <div className="body-con">
                             <div>
-                                {/* map goes here */}
-                                <Card 
-                                player={this.state.player} 
-                                faction={this.state.faction} 
-                                sub={this.state.sub} 
-                                wins={this.state.wins} 
-                                losses={this.state.losses} />
+                                {this.state.data.map(stats => (
+                                    <Card 
+                                    player={stats.player} 
+                                    faction={stats.faction} 
+                                    sub={stats.sub} 
+                                    wins={stats.wins} 
+                                    losses={stats.losses} />
+
+                                ))}
 
                             </div>
                         </div>
