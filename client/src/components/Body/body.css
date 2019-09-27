@@ -38,6 +38,10 @@
     color: whitesmoke;
 }
 
+.nav-btn:hover {
+    color:whitesmoke;
+}
+
 .card-con {
     overflow-y: auto;
     height: 79vh;

@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import Axios from "axios";
 import "./body.css";
-import Card from "../Card"
+import Form from "../Form";
+import Card from "../Card";
 import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class Body extends Component {
@@ -50,7 +51,8 @@ export default class Body extends Component {
                         </div>
                         <div className="clear-float"></div>
                         <div className="body-con">
-                            <div className="card-con">
+                            <Form></Form>
+                            {/* <div className="card-con">
                                 <Scrollbars>
                                 {this.state.data.map(stats => (
                                     <Card 
@@ -62,7 +64,7 @@ export default class Body extends Component {
 
                                 ))}
                                 </Scrollbars>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
