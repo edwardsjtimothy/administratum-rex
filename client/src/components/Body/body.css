@@ -9,6 +9,7 @@
     box-shadow: 5px 10px 10px rgb(21, 32, 21);
     height: 80vh;
     padding: 10px 0px 0px 10px;
+    overflow: hidden;
 }
 
 .clear-float {
@@ -35,4 +36,9 @@
     margin: 0px 0px 0px 2px;
     background: rgba(46, 49, 49, .7);
     color: whitesmoke;
+}
+
+.card-con {
+    overflow-y: auto;
+    height: 79vh;
 }

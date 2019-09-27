@@ -34,6 +34,20 @@ const statsSeed = [
     sub: "Tau Sept",
     wins: 6,
     losses: 4,
+  },
+  {
+    player: "Asa",
+    faction: "Tau",
+    sub: "Tau Sept",
+    wins: 6,
+    losses: 4,
+  },
+  {
+    player: "Asa",
+    faction: "Tau",
+    sub: "Tau Sept",
+    wins: 6,
+    losses: 4,
   }
 ];
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Axios from "axios";
 import "./body.css";
 import Card from "../Card"
+import { Scrollbars } from 'react-custom-scrollbars';
 
 export default class Body extends Component {
     state = {
@@ -49,7 +50,8 @@ export default class Body extends Component {
                         </div>
                         <div className="clear-float"></div>
                         <div className="body-con">
-                            <div>
+                            <div className="card-con">
+                                <Scrollbars>
                                 {this.state.data.map(stats => (
                                     <Card 
                                     player={stats.player} 
@@ -59,7 +61,7 @@ export default class Body extends Component {
                                     losses={stats.losses} />
 
                                 ))}
-
+                                </Scrollbars>
                             </div>
                         </div>
                     </div>

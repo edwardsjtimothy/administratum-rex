@@ -6,4 +6,5 @@
   background-size: cover;
   height: 100vh;
   font-family: 'Lexend Deca', sans-serif;
+  overflow: hidden;
 }
