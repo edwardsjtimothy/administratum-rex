@@ -1,8 +1,10 @@
 .new-record {
     margin: 0px 10px 10px 0px;
     border-radius: 5px 5px 5px 5px;
+    background: rgba(46, 49, 49, .7);
     height: auto;
     text-align: left;
+    padding-left: 20px;
 }
 
 .custom-select {
@@ -10,6 +12,8 @@
     color: whitesmoke;
     border: none; 
     margin-bottom: 10px;
+    width: 120px;
+    border: 1px solid whitesmoke;
 }
 
 .form-heading {
@@ -19,7 +23,10 @@
 .form-submit {
     width: 200px;
     display: block;
-    margin-left: 18px;
+    margin: 10px 0px 10px 16px
 }
 
 
+.form-group {
+    margin-bottom: 0px ;
+}

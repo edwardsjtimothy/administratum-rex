@@ -51,7 +51,10 @@ export default class Body extends Component {
                         </div>
                         <div className="clear-float"></div>
                         <div className="body-con">
+
                             <Form></Form>
+                
+
                             {/* <div className="card-con">
                                 <Scrollbars>
                                 {this.state.data.map(stats => (

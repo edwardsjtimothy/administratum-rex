@@ -22,15 +22,13 @@ export default function index() {
     }
 
 
-
-
     return (
         <div className="new-record">
-            <form>
+            <form id="game-form">
                 <div className="form-group row">
                     <h5 className="form-heading col-sm-2">Faction</h5>
                     <div className="select-con col-sm-10">
-                        <select className="custom-select mr-sm-2">
+                        <select name="faction" className="custom-select mr-sm-2">
                             <option selected>Choose...</option>
                             <option value="imp">Imperium</option>
                             <option value="cha">Chaos</option>
@@ -39,20 +37,17 @@ export default function index() {
                     </div>
                     <h5 className="form-heading col-sm-2">Subfaction</h5>
                     <div className="select-con col-sm-10">
-                        <select name="subfaction" className="custom-select mr-sm-2">
+                        <select name="subfaction" id="subfaction" className="custom-select mr-sm-2">
                             <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            
                         </select>
                     </div>
                     <h5 className="form-heading col-sm-2">Outcome</h5>
                     <div className="select-con col-sm-10">
-                        <select className="custom-select mr-sm-2">
+                        <select className="custom-select">
                             <option selected>Choose...</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                            <option value="win">I won</option>
+                            <option value="lose">I lost</option>
                         </select>
                     </div>
                     <div className="form-submit">
@@ -62,4 +57,5 @@ export default function index() {
             </form>
         </div>
     )
-}
+    }
+
