@@ -31,10 +31,14 @@
     border-bottom: none;
 }
 
+#tab-1 {
+    background: rgba(46, 49, 49, .7);
+}
+
 .nav-btn {
     border-radius: 5px 5px 0px 0px;
     margin: 0px 0px 0px 2px;
-    background: rgba(46, 49, 49, .7);
+    background: rgba(46, 49, 49, .9);
     color: whitesmoke;
 }
 

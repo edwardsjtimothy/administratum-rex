@@ -20,18 +20,42 @@ export default class Body extends Component {
         });
     };
 
-    tabFocus() {
-        const navTabs = document.querySelector(".nav-tabs");
-        navTabs.addEventListener("click", select, false);
+    tabFocus(e) {
 
-       function select(e) {
+        let clicked = e.target.id;
+        let clickedNum = clicked.replace(/^\D+/g, '');
+        notClicked();
+        console.log(clicked);
+        console.log(clickedNum);
 
-            if (e.target !== e.currentTarget) {
-                let clicked = e.target.id;
-                document.getElementById(clicked).style.background = "rgba(46, 49, 49, .9)"
+            switch (clickedNum) {
+                case 1:
+                    console.log("one")
+                    // document.getElementById("#tab-2").style.background = "rgba(46, 49, 49, .9)";
+                    // document.getElementById("#tab-3").style.background = "rgba(46, 49, 49, .9)";
+                    break;
+                case 2:
+                    alert("2 clicked");
+                    break;
+                case 3:
+                    alert("3 clicked");
+                    break;
             }
-            e.stopPropagation();
-        }
+ 
+
+
+        document.getElementById(clicked).style.background = "rgba(46, 49, 49, .7)"
+
+    //     const navTabs = document.querySelector(".nav-tabs");
+    //     navTabs.addEventListener("click", select, false);
+
+    //    function select(e) {
+
+    //         if (e.target !== e.currentTarget) {
+    //             let clicked = e.target.id;
+    //         }
+    //         e.stopPropagation();
+    //     }
 
     } 
 
@@ -52,10 +76,10 @@ export default class Body extends Component {
                         <div className="clear-float"></div>
                         <div className="body-con">
 
-                            <Form></Form>
+                            {/* <Form></Form> */}
                 
 
-                            {/* <div className="card-con">
+                            <div className="card-con">
                                 <Scrollbars>
                                 {this.state.data.map(stats => (
                                     <Card 
@@ -67,7 +91,7 @@ export default class Body extends Component {
 
                                 ))}
                                 </Scrollbars>
-                            </div> */}
+                            </div>
                         </div>
                     </div>
                     <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>

@@ -9,7 +9,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  find: function() {
+  create: function() {
     db.Stats
       .find(req.query)
       .sort({ date: -1 })
