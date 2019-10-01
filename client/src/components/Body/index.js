@@ -3,20 +3,24 @@ import Axios from "axios";
 import "./body.css";
 import Form from "../Form";
 import Card from "../Card";
-import { Scrollbars } from 'react-custom-scrollbars';
+import Loader from "react-loader-spinner";
+import { Scrollbars } from "react-custom-scrollbars";
 
 export default class Body extends Component {
     state = {
-        data: []
+        loading: false,
+        data: [],
+        clickedNum: 0
     }
 
     componentDidMount () {
-
+        this.setState({ loading: true});
         Axios.get("/api/stats")
         .then(res=> {
             let data = res.data; 
             console.log(data);   
             this.setState({ data });
+
         });
     };
 
@@ -24,81 +28,76 @@ export default class Body extends Component {
 
         let clicked = e.target.id;
         let clickedNum = clicked.replace(/^\D+/g, '');
-        notClicked();
+
         console.log(clicked);
-        console.log(clickedNum);
+        console.log("clicked num " + clickedNum);
 
-            switch (clickedNum) {
-                case 1:
-                    console.log("one")
-                    // document.getElementById("#tab-2").style.background = "rgba(46, 49, 49, .9)";
-                    // document.getElementById("#tab-3").style.background = "rgba(46, 49, 49, .9)";
-                    break;
-                case 2:
-                    alert("2 clicked");
-                    break;
-                case 3:
-                    alert("3 clicked");
-                    break;
-            }
- 
+    
+        switch (clickedNum) {
+            case 1:
+                document.getElementById("#tab-2").style.background = "rgba(46, 49, 49, .9)";
+                document.getElementById("#tab-3").style.background = "rgba(46, 49, 49, .9)"; 
+                break;
+            case 2:
+                document.getElementById("#tab-1").style.background = "rgba(46, 49, 49, .9)";
+                document.getElementById("#tab-3").style.background = "rgba(46, 49, 49, .9)";
+                break;
+            case 3:
+                document.getElementById("#tab-2").style.background = "rgba(46, 49, 49, .9)";
+                document.getElementById("#tab-1").style.background = "rgba(46, 49, 49, .9)";
+                break;
+        }
 
 
-        document.getElementById(clicked).style.background = "rgba(46, 49, 49, .7)"
-
-    //     const navTabs = document.querySelector(".nav-tabs");
-    //     navTabs.addEventListener("click", select, false);
-
-    //    function select(e) {
-
-    //         if (e.target !== e.currentTarget) {
-    //             let clicked = e.target.id;
-    //         }
-    //         e.stopPropagation();
-    //     }
-
+        document.getElementById(clicked).style.background = "rgba(46, 49, 49, .7)";
     } 
 
     render() {
-        return (
-            <div className="body-wrap container">
-                <div className="row">
-                    <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
-                    <div className="col-12 col-sm-12 col-md-10 col-lg-10">
-                        <div className="sub-nav">
-                            <h1 className="nav-user">Tim</h1>
-                            <div className="nav-tabs">
-                                <button className="nav-btn btn" id="tab-1" onClick={this.tabFocus}>Leaderboard</button>
-                                <button className="nav-btn btn" id="tab-2" onClick={this.tabFocus}>Your Stats</button>
-                                <button className="nav-btn btn" id="tab-3" onClick={this.tabFocus}>Add New</button>
+            return (
+                <div className="body-wrap container">
+                    <div className="row">
+                        <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
+                        <div className="col-12 col-sm-12 col-md-10 col-lg-10">
+                            <div className="sub-nav">
+                                <h1 className="nav-user">Tim</h1>
+                                <div className="nav-tabs">
+                                    <button className="nav-btn btn" id="tab-1" onClick={this.tabFocus}>Leaderboard</button>
+                                    <button className="nav-btn btn" id="tab-2" onClick={this.tabFocus}>Your Stats</button>
+                                    <button className="nav-btn btn" id="tab-3" onClick={this.tabFocus}>Add New</button>
+                                </div>
+                            </div>
+                            <div className="clear-float"></div>
+                            <div className="body-con">
+                                <div className="card-con"> 
+                                <Loader
+                                        type="Grid"
+                                        color="#334d4d"
+                                        height={200}
+                                        width={200}
+                                        timeout={3000} //3 secs
+
+                                    />
+                                    <Scrollbars>
+                                    {this.state.data.map(stats => (
+                                        <Card 
+                                        player={stats.player} 
+                                        faction={stats.faction} 
+                                        sub={stats.sub} 
+                                        wins={stats.wins} 
+                                        losses={stats.losses} />
+    
+                                    ))}
+                                    </Scrollbars>
+                                </div>
                             </div>
                         </div>
-                        <div className="clear-float"></div>
-                        <div className="body-con">
-
-                            {/* <Form></Form> */}
-                
-
-                            <div className="card-con">
-                                <Scrollbars>
-                                {this.state.data.map(stats => (
-                                    <Card 
-                                    player={stats.player} 
-                                    faction={stats.faction} 
-                                    sub={stats.sub} 
-                                    wins={stats.wins} 
-                                    losses={stats.losses} />
-
-                                ))}
-                                </Scrollbars>
-                            </div>
-                        </div>
+                        <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                     </div>
-                    <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                 </div>
-            </div>
-        )
+            )
+            
+        }
     }
-}
+
 
 
