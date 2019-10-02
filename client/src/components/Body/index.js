@@ -5,7 +5,7 @@ import Form from "../Form";
 import Card from "../Card";
 import Loader from "react-loader-spinner";
 import { Scrollbars } from "react-custom-scrollbars";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 
 export default class Body extends Component {
     state = {
@@ -79,12 +79,12 @@ export default class Body extends Component {
                                 <div className="sub-nav">
                                     <h1 className="nav-user">Tim</h1>
                                     <div className="nav-tabs">
-                                        <button className="nav-btn btn" id="tab-1" onClick={this.tabFocus}>Leaderboard</button>
-                                        <a href="/yourstats" className="nav-btn btn" id="tab-2" onClick={(e) => {
+                                        <Link to="/" className="nav-btn btn" id="tab-1" onClick={this.tabFocus}>Leaderboard</Link>
+                                        <Link to="/yourstats" className="nav-btn btn" id="tab-2" onClick={(e) => {
                                             this.tabFocus(e);
                                             this.yourStats();
-                                        }}>Your Stats</a>
-                                        <button className="nav-btn btn" id="tab-3" onClick={this.tabFocus}>Add New</button>
+                                        }}>Your Stats</Link>
+                                        <Link to="/form" className="nav-btn btn" id="tab-3" onClick={this.tabFocus}>Add New</Link>
                                     </div>
                                 </div>
                                 <div className="clear-float"></div>
