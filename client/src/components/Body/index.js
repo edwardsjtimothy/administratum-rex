@@ -88,8 +88,8 @@ export default class Body extends Component {
                                <Loader className="loader"
                                        type="Grid"
                                        color="#334d4d"
-                                       height={550}
-                                       width={550}
+                                       height={600}
+                                       width={400}
                                    />
                                
                                : 
@@ -102,7 +102,6 @@ export default class Body extends Component {
                                         sub={stats.sub} 
                                         wins={stats.wins} 
                                         losses={stats.losses} />
-    
                                     ))}
                                     </Scrollbars>
                                }
