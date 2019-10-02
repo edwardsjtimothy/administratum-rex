@@ -1,29 +1,28 @@
-import React from "react"
+import React, { Component } from "react";
 import "./form.css";
+import { Select } from 'antd';
 
-export default function index() {
+const factionData = ["Imperial", "Chaos", "Xenons"]
 
-    const selectListData = {
+const factionData = {
 
-        "subfaction": {
-            imp: {
-                text: ["Astra Militarum", "White Scars", "Ultramarines", "Salamanders", "Imperial Fists", "Iron Hands", "Space Wolves", "Blood Angels", "Death Watch" , "Grey Knights", "Adeptus Custodes"],
-                value: ["Mil", "WScars", "Ultra", "Sala", "IFists", "IHands", "SWolves", "BAngels", "DWatch", "GKnights", "Cus"]
-            },
-            cha: {
-                text: ["Daemons of Nurgle", "Daemons of Khorne", "Daemons of Slaanesh", "Daemons of Tzeentch", "Thousand Sons", "Death Guard", "Emperor's Children","Black Legion", "World Eaters"],
-                value: ["Nurgle","Khorne","Slaanesh","Tzeentch","TSons","DGuard","EChildren","BLegion","WEaters"]
-            },
-            xen: {
-                text: ["Aeldari", "Necrons", "Genestealer Cults", "Tyranids", "Tau", "Orks", "Harlequins", "Dark Eldar"],
-                value: ["Eld", "Nec", "Gene", "Tyr", "Tau", "Orks", "Harl", "DEld"]
-            },
+    Imperial: ["Astra Militarum", "White Scars", "Ultramarines", "Salamanders", "Imperial Fists", "Iron Hands", "Space Wolves", "Blood Angels", "Death Watch" , "Grey Knights", "Adeptus Custodes"],
+    Chaos: ["Daemons of Nurgle", "Daemons of Khorne", "Daemons of Slaanesh", "Daemons of Tzeentch", "Thousand Sons", "Death Guard", "Emperor's Children","Black Legion", "World Eaters"],
+    Xenos: ["Aeldari", "Necrons", "Genestealer Cults", "Tyranids", "Tau", "Orks", "Harlequins", "Dark Eldar"],
+
+};
+
+    
+    export default class index extends Component {
+
+        state = {
+            faction: factionData[]
+            subfaction:
         }
-    }
 
-
-    return (
-        <div className="new-record">
+        render() {
+            return (
+                <div className="new-record">
             <form id="game-form">
                 <div className="form-group row">
                     <h5 className="form-heading col-sm-2">Faction</h5>
@@ -56,6 +55,9 @@ export default function index() {
                 </div>
             </form>
         </div>
-    )
+            )
+        }
     }
+    
+    
 
