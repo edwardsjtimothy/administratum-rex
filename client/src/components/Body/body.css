@@ -57,5 +57,6 @@
 
 .card-con {
     overflow-y: auto;
+    overflow-x: hidden;
     height: 79vh;
 }

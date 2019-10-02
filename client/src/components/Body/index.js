@@ -12,7 +12,6 @@ export default class Body extends Component {
         loading: false,
         data: [],
         currentPlayer: [],
-        tab: 1
     }
 
     componentDidMount () {
@@ -69,39 +68,37 @@ export default class Body extends Component {
     } 
 
     render() {
-            return (
+        return (
             <Router>
-
-                    <div className="body-wrap container">
-                        <div className="row">
-                            <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
-                            <div className="col-12 col-sm-12 col-md-10 col-lg-10">
-                                <div className="sub-nav">
-                                    <h1 className="nav-user">Tim</h1>
-                                    <div className="nav-tabs">
-                                        <Link to="/" className="nav-btn btn" id="tab-1" onClick={this.tabFocus}>Leaderboard</Link>
-                                        <Link to="/yourstats" className="nav-btn btn" id="tab-2" onClick={(e) => {
-                                            this.tabFocus(e);
-                                            this.yourStats();
-                                        }}>Your Stats</Link>
-                                        <Link to="/form" className="nav-btn btn" id="tab-3" onClick={this.tabFocus}>Add New</Link>
-                                    </div>
+                <div className="body-wrap container">
+                    <div className="row">
+                        <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
+                        <div className="col-12 col-sm-12 col-md-10 col-lg-10">
+                            <div className="sub-nav">
+                                <h1 className="nav-user">Tim</h1>
+                                <div className="nav-tabs">
+                                    <Link to="/" className="nav-btn btn" id="tab-1" onClick={this.tabFocus}>Leaderboard</Link>
+                                    <Link to="/yourstats" className="nav-btn btn" id="tab-2" onClick={(e) => {
+                                        this.tabFocus(e);
+                                        this.yourStats();
+                                    }}>Your Stats</Link>
+                                    <Link to="/form" className="nav-btn btn" id="tab-3" onClick={this.tabFocus}>Add New</Link>
                                 </div>
-                                <div className="clear-float"></div>
-                                <div className="body-con">
+                            </div>
+                            <div className="clear-float"></div>
+                            <div className="body-con">   
+                                <div className="card-con">
+                                    <Switch>
+                                        <Route exact path="/">
+                                            {this.state.loading === true ?
+                                                <Loader className="loader"
+                                                    type="Grid"
+                                                    color="#334d4d"
+                                                    height={600}
+                                                    width={400}
+                                                />
 
-                                    <div className="card-con">
-                                        <Switch>
-                                            <Route exact path="/">
-                                                {this.state.loading === true ?
-                                                    <Loader className="loader"
-                                                        type="Grid"
-                                                        color="#334d4d"
-                                                        height={600}
-                                                        width={400}
-                                                    />
-
-                                                    :
+                                                :
                                                 <Scrollbars>
                                                     {this.state.data.map(stats => (
                                                         <Card
@@ -112,35 +109,35 @@ export default class Body extends Component {
                                                             losses={stats.losses} />
                                                     ))}
                                                 </Scrollbars>
-                                                }
-                                            </Route>
-                                            <Route exact path="/yourstats">
+                                            }
+                                        </Route>
+                                        <Route exact path="/yourstats">
                                             <Scrollbars>
-                                                    {this.state.currentPlayer.map(stats => (
-                                                        <Card
-                                                            player={stats.player}
-                                                            faction={stats.faction}
-                                                            sub={stats.sub}
-                                                            wins={stats.wins}
-                                                            losses={stats.losses} />
-                                                    ))}
-                                                </Scrollbars>
-                                            </Route>
-                                            {/* <Route exact path="/form">
+                                                {this.state.currentPlayer.map(stats => (
+                                                    <Card
+                                                        player={stats.player}
+                                                        faction={stats.faction}
+                                                        sub={stats.sub}
+                                                        wins={stats.wins}
+                                                        losses={stats.losses} />
+                                                ))}
+                                            </Scrollbars>
+                                        </Route>
+                                        <Route exact path="/form">
                                             <Form></Form>
-                                        </Route> */}
-                                        </Switch>
-                                    </div>
+                                        </Route>
+                                    </Switch>
                                 </div>
                             </div>
-                            <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                         </div>
+                        <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                     </div>
-                </Router>
+                </div>
+            </Router>
         )
 
-        }
     }
+}
 
 
 
