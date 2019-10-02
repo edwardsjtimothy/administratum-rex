@@ -20,7 +20,8 @@ export default class Body extends Component {
             let data = res.data; 
             console.log(data);   
             this.setState({ data });
-
+            
+            this.setState({ loading: false});
         });
     };
 
@@ -28,23 +29,35 @@ export default class Body extends Component {
 
         let clicked = e.target.id;
         let clickedNum = clicked.replace(/^\D+/g, '');
+        let tab1 = document.getElementById("tab-1")
+        let tab2 = document.getElementById("tab-2")
+        let tab3 = document.getElementById("tab-3")
 
         console.log(clicked);
         console.log("clicked num " + clickedNum);
 
     
-        switch (clickedNum) {
-            case 1:
-                document.getElementById("#tab-2").style.background = "rgba(46, 49, 49, .9)";
-                document.getElementById("#tab-3").style.background = "rgba(46, 49, 49, .9)"; 
+        switch (clicked) {
+            case "tab-1":
+                // document.getElementById("#tab-2").style.background = "rgba(46, 49, 49, .9)";
+                tab2.style.background = "rgba(46, 49, 49, .9)";
+                tab3.style.background = "rgba(46, 49, 49, .9)";
+
+
                 break;
-            case 2:
-                document.getElementById("#tab-1").style.background = "rgba(46, 49, 49, .9)";
-                document.getElementById("#tab-3").style.background = "rgba(46, 49, 49, .9)";
+            case "tab-2":
+                // document.getElementById("#tab-1").style.background = "rgba(46, 49, 49, .9)";
+                tab1.style.background = "rgba(46, 49, 49, .9)";
+                tab3.style.background = "rgba(46, 49, 49, .9)";
+
+                // document.getElementById("#tab-3").style.background = "rgba(46, 49, 49, .9)";
                 break;
-            case 3:
-                document.getElementById("#tab-2").style.background = "rgba(46, 49, 49, .9)";
-                document.getElementById("#tab-1").style.background = "rgba(46, 49, 49, .9)";
+            case "tab-3":
+                // document.getElementById("#tab-2").style.background = "rgba(46, 49, 49, .9)";
+                // document.getElementById("#tab-1").style.background = "rgba(46, 49, 49, .9)";
+                tab1.style.background = "rgba(46, 49, 49, .9)";
+                tab2.style.background = "rgba(46, 49, 49, .9)";
+
                 break;
         }
 
@@ -68,15 +81,19 @@ export default class Body extends Component {
                             </div>
                             <div className="clear-float"></div>
                             <div className="body-con">
-                                <div className="card-con"> 
-                                <Loader
-                                        type="Grid"
-                                        color="#334d4d"
-                                        height={200}
-                                        width={200}
-                                        timeout={3000} //3 secs
 
-                                    />
+                                <div className="card-con"> 
+                               
+                               {this.state.loading===true? 
+                               <Loader className="loader"
+                                       type="Grid"
+                                       color="#334d4d"
+                                       height={550}
+                                       width={550}
+                                   />
+                               
+                               : 
+                               
                                     <Scrollbars>
                                     {this.state.data.map(stats => (
                                         <Card 
@@ -88,6 +105,7 @@ export default class Body extends Component {
     
                                     ))}
                                     </Scrollbars>
+                               }
                                 </div>
                             </div>
                         </div>

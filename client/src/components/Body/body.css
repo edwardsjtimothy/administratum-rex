@@ -8,8 +8,19 @@
     background: rgba(46, 49, 49, .7);
     box-shadow: 5px 10px 10px rgb(21, 32, 21);
     height: auto;
+    width: 100%;
     padding: 10px 0px 0px 10px;
     overflow: hidden;
+    position: relative;
+}
+
+.loader {
+    margin: 0 auto;
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
 }
 
 .clear-float {
