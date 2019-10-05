@@ -16,8 +16,8 @@ const statsSeed = [
   },
   {
     player: "Alexa",
-    faction: "Aeldari",
-    sub: "Ulthwe",
+    faction: "Xenos",
+    sub: "Aeldari",
     wins: 17,
     losses: 5,
   },
@@ -30,8 +30,8 @@ const statsSeed = [
   },
   {
     player: "Asa",
-    faction: "Tau",
-    sub: "Tau Sept",
+    faction: "Xenos",
+    sub: "Tau",
     wins: 15,
     losses: 7,
   },

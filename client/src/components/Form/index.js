@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./form.css";
 import {Select} from "antd";
 import 'antd/es/select/style/css';
+import Axios from "axios";
 // import Radial from "../Radial";
 
 const {Option} = Select;
@@ -20,6 +21,30 @@ export default class index extends Component {
     state = {
         faction: subData[factionData[0]],
         subfaction: subData[factionData[0]][0],
+    };
+
+
+
+    submitUpdate =(props)=> {
+        let data = props.allData.data;
+        let player = props.allData.player;
+
+        let playerGames = data.filter(game=> {
+            if (game.player === player) {
+                return true
+            }
+            console.log(playerGames);
+        })
+
+    
+        playerGames.forEach(game=>{
+            if (this.state.subfaction === game.sub) {
+                Axios.update()
+            } else {
+                Axios.post 
+            }
+
+        })
     };
 
     handleFactionChange = value => {
@@ -50,6 +75,7 @@ export default class index extends Component {
                                 defaultValue={factionData[0]}
                                 style={{ width: 300 }}
                                 onChange={this.handleFactionChange}
+                                
                             >
                                 {factionData.map(faction => (
                                     <Option key={faction}>{faction}</Option>
@@ -79,7 +105,7 @@ export default class index extends Component {
                             </Select>
                         </div>
                         <div className="form-submit">
-                            <button className="btn btn-warning">Submit</button>
+                            <button className="btn btn-warning" onClick={this.submitUpdate}>Submit</button>
                         </div>
                     </div>
                 </form>

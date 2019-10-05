@@ -123,7 +123,7 @@ export default class Body extends Component {
                                             </Scrollbars>
                                         </Route>
                                         <Route exact path="/form">
-                                            <Form></Form>
+                                            <Form allData = {this.state}></Form>
                                         </Route>
                                     </Switch>
                                 </div>
