@@ -97,7 +97,6 @@ export default class Body extends Component {
                                                     height={600}
                                                     width={400}
                                                 />
-
                                                 :
                                                 <Scrollbars>
                                                     {this.state.data.map(stats => (

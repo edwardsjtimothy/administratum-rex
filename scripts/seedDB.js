@@ -18,7 +18,7 @@ const statsSeed = [
     player: "Alexa",
     faction: "Aeldari",
     sub: "Ulthwe",
-    wins: 13,
+    wins: 17,
     losses: 5,
   },
   {
