@@ -39,12 +39,17 @@ export default class index extends Component {
     
         playerGames.forEach(game=>{
             if (this.state.subfaction === game.sub) {
-                Axios.update()
+                Axios.update("/player")
+                .then(res=> {
+                    console.log(res);
+                });
             } else {
-                Axios.post 
-            }
-
-        })
+                Axios.post("/player")
+                .then(res=> {
+                    console.log(res)
+                });
+            };
+        });
     };
 
     handleFactionChange = value => {

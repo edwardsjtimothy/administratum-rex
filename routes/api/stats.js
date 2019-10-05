@@ -7,7 +7,10 @@ router.route("/")
 router.route("/player")
   .get(statsController.findOne)
   .post(statsController.create)
-  .update(statsController.update);
+  .put(statsController.update);
+
+
+// router.route("/player:player")
 
 
 
