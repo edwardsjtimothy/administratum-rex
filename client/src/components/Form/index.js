@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import "./form.css";
 import {Select} from "antd";
-// import 'antd/es/select/style/css';
+import 'antd/es/select/style/css';
+// import Radial from "../Radial";
 
 const {Option} = Select;
 
@@ -36,10 +37,12 @@ export default class index extends Component {
     };
 
     render() {
-        const { factions } = this.state;
+        const { faction } = this.state;
         return (
             <div className="new-record">
+                {/* <Radial></Radial> */}
                 <form id="game-form">
+
                     <div className="form-group row">
                         <h5 className="form-heading col-sm-2">Faction</h5>
                         <div className="select-con col-sm-10">

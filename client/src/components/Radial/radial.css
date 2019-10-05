@@ -1,0 +1,22 @@
+.rad-wrap {
+    text-align: center;
+    border: 1px solid white;
+}
+
+.btn-select {
+    background: none;
+    border: none;
+    font-size: 5em;
+    color: whitesmoke;
+}
+
+#right-btn {
+    margin-left: 100px;
+}
+
+#left-btn {
+    margin-right: 100px; 
+}
+
+
+

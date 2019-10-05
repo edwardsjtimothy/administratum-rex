@@ -3,7 +3,11 @@
     border-radius: 5px 5px 5px 5px;
     background: rgba(46, 49, 49, .7);
     height: auto;
+    
+}
 
+.text-col {
+    color: whitesmoke;
 }
 
 .score-board {

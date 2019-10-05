@@ -1,21 +1,24 @@
 .new-record {
     margin: 0px 10px 10px 0px;
     border-radius: 5px 5px 5px 5px;
-    background: rgba(46, 49, 49, .7);
+    /* background: rgba(46, 49, 49, .7); */
     height: 98.5%;
     text-align: left;
     padding-left: 20px;
+    overflow: hidden;
 }
 
 .custom-select {
     background: rgba(46, 49, 49, .7);
     color: whitesmoke;
-    margin-bottom: 140px;
+    margin-bottom: 135px;
     width: 300px;
     border: 1px solid whitesmoke;
 }
 
+
 .form-heading {
+    color: whitesmoke;
     margin: 10px 10px 10px 0px;
 }
 
