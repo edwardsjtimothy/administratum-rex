@@ -25,7 +25,8 @@ export default class index extends Component {
 
 
 
-    submitUpdate =(props)=> {
+    submitUpdate =(props,e)=> {
+        e.preventDefault();
         let data = props.allData.data;
         let player = props.allData.player;
 
@@ -41,12 +42,13 @@ export default class index extends Component {
             if (this.state.subfaction === game.sub) {
                 Axios.update("/player")
                 .then(res=> {
-                    console.log(res);
+                    console.log(res.body);
                 });
             } else {
                 Axios.post("/player")
                 .then(res=> {
-                    console.log(res)
+                    console.log(res.body)
+                    
                 });
             };
         });
