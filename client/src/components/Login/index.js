@@ -1,9 +1,15 @@
-import React from "react"
-import "./login.css"
+import React from "react";
+import Axios from "axios";
+import "./login.css";
+import {Redirect} from "react-router-dom"
 
-export default function index() {
-    return (
-        <div class="container">
+export default class index extends Component {
+    
+
+
+    render() {
+        return (
+            <div class="container">
         <div class="row">
             <div class="col-0 col-sm-0 col-md-3 col-lg-3"></div>
             <div class="form-con col-12 col-sm-12 col-md-6 col-lg-6">
@@ -24,6 +30,8 @@ export default function index() {
             <div class="col-0 col-sm-0 col-md-3 col-lg-3"></div>
         </div>
         </div>
-    )
+        )
+    }
 }
+
   

@@ -16,6 +16,7 @@
 
 .underline {
     border-bottom: 2px solid whitesmoke;
+    color: whitesmoke;
 }
 
 #create-acc {
