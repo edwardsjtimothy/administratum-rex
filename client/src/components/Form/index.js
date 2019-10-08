@@ -10,7 +10,7 @@ const {Option} = Select;
 const factionData = ["Imperial", "Chaos", "Xenos"];
 const subData = {
 
-    Imperial: ["Astra Militarum", "White Scars", "Ultramarines", "Salamanders", "Imperial Fists", "Iron Hands", "Space Wolves", "Blood Angels", "Death Watch", "Grey Knights", "Adeptus Custodes"],
+    Imperial: ["Astra Militarum", "White Scars", "Ultramarines", "Salamanders", "Imperial Fists", "Iron Hands", "Space Wolves", "Blood Angels", "Death Watch", "Grey Knights", "Adeptus Custodes", "Adeptus Soroitas"],
     Chaos: ["Daemons of Nurgle", "Daemons of Khorne", "Daemons of Slaanesh", "Daemons of Tzeentch", "Thousand Sons", "Death Guard", "Emperor's Children", "Black Legion", "World Eaters"],
     Xenos: ["Aeldari", "Necrons", "Genestealer Cults", "Tyranids", "Tau", "Orks", "Harlequins", "Drukahri"],
 
@@ -25,10 +25,11 @@ export default class index extends Component {
 
 
 
-    submitUpdate =(props,e)=> {
-        e.preventDefault();
+    submitUpdate =(props)=> {
         let data = props.allData.data;
         let player = props.allData.player;
+        console.log(data);
+        console.log(player);
 
         let playerGames = data.filter(game=> {
             if (game.player === player) {
@@ -42,13 +43,12 @@ export default class index extends Component {
             if (this.state.subfaction === game.sub) {
                 Axios.update("/player")
                 .then(res=> {
-                    console.log(res.body);
+                    console.log(res.data)
                 });
             } else {
                 Axios.post("/player")
                 .then(res=> {
-                    console.log(res.body)
-                    
+                    console.log(res.data)
                 });
             };
         });
@@ -112,7 +112,7 @@ export default class index extends Component {
                             </Select>
                         </div>
                         <div className="form-submit">
-                            <button className="btn btn-warning" onClick={this.submitUpdate}>Submit</button>
+                            <button type="button" className="btn btn-warning" onClick={this.submitUpdate}>Submit</button>
                         </div>
                     </div>
                 </form>

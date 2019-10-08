@@ -12,7 +12,7 @@ export default class Body extends Component {
         loading: false,
         data: [],
         currentPlayer: [],
-    }
+    };
 
     componentDidMount () {
         this.setState({ loading: true});
@@ -29,25 +29,17 @@ export default class Body extends Component {
     yourStats=()=> {
        let data = this.state.data;
        let player = data.filter((game)=>{
-        //    console.log(game)
-        return game.player === "Tim"
+        return game.player === "Tim" //    this is where logged in user should go
        })
        this.setState({ currentPlayer: player });
-       console.log(player);
-
-    }
+    };
 
     tabFocus(e) {
         let clicked = e.target.id;
-        let clickedNum = clicked.replace(/^\D+/g, '');
         let tab1 = document.getElementById("tab-1");
         let tab2 = document.getElementById("tab-2");
         let tab3 = document.getElementById("tab-3");
 
-        console.log(clicked);
-        console.log("clicked num " + clickedNum);
-
-    
         switch (clicked) {
             case "tab-1":
                 tab2.style.background = "rgba(46, 49, 49, .9)";
@@ -61,11 +53,10 @@ export default class Body extends Component {
                 tab1.style.background = "rgba(46, 49, 49, .9)";
                 tab2.style.background = "rgba(46, 49, 49, .9)";
                 break;
-        }
-
+        };
 
         document.getElementById(clicked).style.background = "rgba(46, 49, 49, .7)";
-    } 
+    }; 
 
     render() {
         return (

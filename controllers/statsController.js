@@ -19,7 +19,7 @@ module.exports = {
 
   update: function (req, res) {
     db.Stats
-      .put(
+      .update(
         {
           player: req.body.player
         },
