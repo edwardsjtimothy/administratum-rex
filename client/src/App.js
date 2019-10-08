@@ -3,7 +3,7 @@ import "./App.css";
 import Nav from "./components/Nav";
 import Body from "./components/Body";
 import Login from "./components/Login";
-// import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import {Redirect} from "react-router-dom";
 
 function App() {
 
