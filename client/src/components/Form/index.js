@@ -17,6 +17,10 @@ const subData = {
 };
 
 export default class index extends Component {
+    constructor (props) {
+        super(props)
+        console.log(props);
+    }
 
     state = {
         faction: subData[factionData[0]],
@@ -24,35 +28,39 @@ export default class index extends Component {
     };
 
 
-
-    submitUpdate =(props)=> {
-        let data = props.allData.data;
-        let player = props.allData.player;
+    
+    submitUpdate =()=> {
+        let data = this.props.allData.data;
+        let player = this.props.allData.currentUser;
         console.log(data);
         console.log(player);
 
         let playerGames = data.filter(game=> {
             if (game.player === player) {
-                return true
+                console.log(game)
+                return game
             }
-            console.log(playerGames);
         })
+        console.log(playerGames);
 
     
         playerGames.forEach(game=>{
             if (this.state.subfaction === game.sub) {
-                Axios.put("/stats/player", {
+                console.log(game.sub);
+                console.log("put");
+                Axios.put("stats/player", {
+                    wins: +1
 
-
-                })
-                .then(res=> {
-                    console.log(res.data)
                 });
+                return;
             } else {
-                Axios.post("/stats/player")
-                .then(res=> {
-                    console.log(res.data)
+                console.log("post");
+                Axios.post("stats/player", {
+                    faction: this.state.faction,
+                    sub: this.state.subfaction,
+                    wins: +1
                 });
+                return;
             };
         });
     };
@@ -72,7 +80,7 @@ export default class index extends Component {
     };
 
     render() {
-        const { faction } = this.state;
+        // const { faction } = this.state;
         return (
             <div className="new-record">
                 {/* <Radial></Radial> */}
@@ -106,12 +114,12 @@ export default class index extends Component {
                         </div>
                         <h5 className="form-heading col-sm-2">Outcome</h5>
                         <div className="select-con col-sm-10">
-                            <Select className="custom-select"
+                            <Select id="win-lose" className="custom-select"
                                 defaultValue="I Won"
                                 style={{ width: 300 }}
                             >
-                                <Option id="win">I Won</Option>
-                                <Option id="lose">I Lost</Option>
+                                <Option value="win">I Won</Option>
+                                <Option value="lose">I Lost</Option>
                             </Select>
                         </div>
                         <div className="form-submit">
