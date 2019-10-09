@@ -25,6 +25,7 @@ class Login extends React.Component{
             password: this.state.password,
         }).then((res)=>{
             localStorage.setItem('JWT', res.data.token);
+            localStorage.setItem("username", res.data.username);
             this.setState({loggedIn: true})
             console.log("logged in")
         }).catch((err)=>{

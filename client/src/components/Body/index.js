@@ -16,6 +16,8 @@ export default class Body extends Component {
 
     componentDidMount () {
         this.setState({ loading: true});
+        let currentUser = localStorage.getItem("username");
+        this.setState({ currentUser: currentUser })
         Axios.get("/api/stats")
         .then(res=> {
             let data = res.data; 
@@ -29,7 +31,7 @@ export default class Body extends Component {
     yourStats=()=> {
        let data = this.state.data;
        let player = data.filter((game)=>{
-        return game.player === "Tim" //    this is where logged in user should go
+        return game.player === localStorage.getItem("username"); //    this is where logged in user should go
        })
        this.setState({ currentPlayer: player });
     };
@@ -66,9 +68,9 @@ export default class Body extends Component {
                         <div className="col-0 col-sm-0 col-md-1 col-lg-1"></div>
                         <div className="col-12 col-sm-12 col-md-10 col-lg-10">
                             <div className="sub-nav">
-                                <h1 className="nav-user">Tim</h1>
+                                <h1 className="nav-user">{this.state.currentUser}</h1>
                                 <div className="nav-tabs">
-                                    <Link to="/" className="nav-btn btn" id="tab-1" onClick={this.tabFocus}>Leaderboard</Link>
+                                    <Link to="/home" className="nav-btn btn" id="tab-1" onClick={this.tabFocus}>Leaderboard</Link>
                                     <Link to="/yourstats" className="nav-btn btn" id="tab-2" onClick={(e) => {
                                         this.tabFocus(e);
                                         this.yourStats();
@@ -80,7 +82,7 @@ export default class Body extends Component {
                             <div className="body-con">   
                                 <div className="card-con">
                                     <Switch>
-                                        <Route exact path="/">
+                                        <Route exact path="/home">
                                             {this.state.loading === true ?
                                                 <Loader className="loader"
                                                     type="Grid"

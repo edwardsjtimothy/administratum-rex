@@ -41,12 +41,15 @@ export default class index extends Component {
     
         playerGames.forEach(game=>{
             if (this.state.subfaction === game.sub) {
-                Axios.update("/player")
+                Axios.put("/stats/player", {
+
+
+                })
                 .then(res=> {
                     console.log(res.data)
                 });
             } else {
-                Axios.post("/player")
+                Axios.post("/stats/player")
                 .then(res=> {
                     console.log(res.data)
                 });
@@ -107,8 +110,8 @@ export default class index extends Component {
                                 defaultValue="I Won"
                                 style={{ width: 300 }}
                             >
-                                <Option value="win">I Won</Option>
-                                <Option value="lose">I Lost</Option>
+                                <Option id="win">I Won</Option>
+                                <Option id="lose">I Lost</Option>
                             </Select>
                         </div>
                         <div className="form-submit">

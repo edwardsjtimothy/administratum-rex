@@ -7,6 +7,7 @@ const passport = require("passport")
 require('./config/passport');
 const app = express();
 const PORT = 3001;
+const User = require("./models/user");
 // process.env.PORT
 
 // Define middleware here
@@ -56,6 +57,7 @@ app.post('/loginUser', (req, res, next) => {
         res.status(200).send({
           auth: true,
           token,
+          "username": user.username,
           message: 'user found & logged in',
         });
       });
