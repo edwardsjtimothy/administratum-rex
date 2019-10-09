@@ -1,7 +1,6 @@
 import Axios from "axios";
 import "../Login/login.css"
 import { Redirect } from "react-router-dom"
-import Body from "../Body";
 import React, { Component } from "react";
 
 

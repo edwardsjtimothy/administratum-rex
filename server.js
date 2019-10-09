@@ -1,9 +1,13 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
 const routes = require("./routes");
+const jwt = require("jsonwebtoken")
+const jwtSecret = require('./config/jwtConfig')
+const passport = require("passport")
+require('./config/passport');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = 3001;
+// process.env.PORT
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
@@ -12,12 +16,11 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
-// Add routes, both API and view
-app.use(routes);
 
 //login/sign up 
 
 app.post('/registerUser', (req, res, next) => {
+  console.log("register");
   passport.authenticate('register', (err, user, info) => {
     if (err) {
       console.error("error here" + err);
@@ -45,20 +48,23 @@ app.post('/loginUser', (req, res, next) => {
         res.status(403).send(info.message);
       }
     } else {
-        User.findOne({ username: req.body.username
-        }).then(user => {
-          const token = jwt.sign({ id: user.id }, jwtSecret.secret, {
-            expiresIn: 60 * 60,
-          });
-          res.status(200).send({
-            auth: true,
-            token,
-            message: 'user found & logged in',
-          });
+      User.findOne({ username: req.body.username
+      }).then(user => {
+        const token = jwt.sign({ id: user.id }, jwtSecret.secret, {
+          expiresIn: 60 * 60,
         });
+        res.status(200).send({
+          auth: true,
+          token,
+          message: 'user found & logged in',
+        });
+      });
     }
   })(req, res, next);
 });
+
+// Add routes, both API and view
+app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/reactwarhammerstats");
