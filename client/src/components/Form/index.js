@@ -19,7 +19,6 @@ const subData = {
 export default class index extends Component {
     constructor (props) {
         super(props)
-        console.log(props);
     }
 
     state = {
@@ -43,7 +42,7 @@ export default class index extends Component {
         })
         console.log(playerGames);
 
-    
+    if (playerGames.length > 0) {
         playerGames.forEach(game=>{
             if (this.state.subfaction === game.sub) {
                 console.log(game.sub);
@@ -54,15 +53,23 @@ export default class index extends Component {
                 });
                 return;
             } else {
-                console.log("post");
-                Axios.post("stats/player", {
-                    faction: this.state.faction,
-                    sub: this.state.subfaction,
-                    wins: +1
-                });
-                return;
+                console.log("for each post");
+                    Axios.post("stats/player", {
+                        faction: this.state.faction,
+                        sub: this.state.subfaction,
+                        wins: +1
+                    });
+                    return;
             };
         });
+    } else {
+        console.log("non for each post")
+        Axios.post("stats/player", {
+            faction: this.state.faction,
+            sub: this.state.subfaction,
+            wins: +1
+        });
+    }
     };
 
     handleFactionChange = value => {
