@@ -30,7 +30,6 @@ export default class Body extends Component {
     };
 
     yourStats=()=> {
-        this.setState({ loading: true});
         Axios.get("/api/stats")
         .then(res=> {
             let data = res.data; 
