@@ -39,18 +39,16 @@ export default class index extends Component {
 
 
     submitUpdate = () => {
-        
         let player = this.props.allData.currentUser;
         Axios.post("/api/stats/player", {
-                        player: player,
-                        faction: "Imperial",
-                        sub: this.state.subfaction,
-                        wins: +1,
-                        losses: 0
-                    })
-
+            player: player,
+            faction: "Imperial",
+            subfaction: this.state.subfaction,
+            wins: +1,
+            losses: 0
+        })
         
-
+        Axios.get("/api/stats");
 
         // let data = this.props.allData.data;
         // let player = this.props.allData.currentUser;
@@ -68,8 +66,8 @@ export default class index extends Component {
         // if (victory === true) {
         //     if (playerGames.length > 0) {
         //         playerGames.forEach(game => {
-        //             if (this.state.subfaction === game.sub) {
-        //                 console.log(game.sub);
+        //             if (this.state.subfaction === game.subfaction) {
+        //                 console.log(game.subfaction);
         //                 console.log("put win");
         //                 Axios.put("/api/stats/player", {
         //                     wins: +1
@@ -79,7 +77,7 @@ export default class index extends Component {
         //                 console.log("for each post win");
         //                 Axios.post("/api/stats/player", {
         //                     faction: this.state.faction,
-        //                     sub: this.state.subfaction,
+        //                     subfaction: this.state.subfaction,
         //                     wins: +1
         //                 });
         //                 return;
@@ -90,7 +88,7 @@ export default class index extends Component {
         //         Axios.post("/api/stats/player", {
         //             player: player,
         //             faction: this.state.faction,
-        //             sub: this.state.subfaction,
+        //             subfaction: this.state.subfaction,
         //             wins: +1
         //         })
         //     }
@@ -108,7 +106,7 @@ export default class index extends Component {
         //                 console.log("for each post loss");
         //                 Axios.post("/api/stats/player", {
         //                     faction: this.state.faction,
-        //                     sub: this.state.subfaction,
+        //                     subfaction: this.state.subfaction,
         //                     losses: +1
         //                 });
         //                 return;
@@ -119,7 +117,7 @@ export default class index extends Component {
         //         Axios.post("/api/stats/player", {
         //             player: player,
         //             faction: this.state.faction,
-        //             sub: this.state.subfaction,
+        //             subfaction: this.state.subfaction,
         //             losses: +1
         //         });
         //     };

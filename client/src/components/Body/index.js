@@ -30,6 +30,15 @@ export default class Body extends Component {
     };
 
     yourStats=()=> {
+        this.setState({ loading: true});
+        Axios.get("/api/stats")
+        .then(res=> {
+            let data = res.data; 
+            console.log(data);   
+            this.setState({ data });
+            this.setState({ loading: false});
+            this.yourStats();
+        }); 
        let data = this.state.data;
        let player = data.filter((game)=>{
         return game.player === localStorage.getItem("username"); //    this is where logged in user should go
@@ -97,7 +106,7 @@ export default class Body extends Component {
                                                         <Card
                                                             player={stats.player}
                                                             faction={stats.faction}
-                                                            sub={stats.sub}
+                                                            sub={stats.subfaction}
                                                             wins={stats.wins}
                                                             losses={stats.losses} />
                                                     ))}
@@ -110,7 +119,7 @@ export default class Body extends Component {
                                                     <Card
                                                         player={stats.player}
                                                         faction={stats.faction}
-                                                        sub={stats.sub}
+                                                        sub={stats.subfaction}
                                                         wins={stats.wins}
                                                         losses={stats.losses} />
                                                 ))}

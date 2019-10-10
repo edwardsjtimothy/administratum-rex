@@ -25,7 +25,6 @@ module.exports = {
         },
         {
           $set: {
-            faction: req.body.faction,
             subfaction: req.body.subfaction,
             wins: req.body.wins,
             losses: req.body.losses

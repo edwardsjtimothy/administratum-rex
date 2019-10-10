@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const playerStats = new Schema({
   player: { type: String, required: true },
   faction: { type: String, required: true },
-  sub: { type: String, required: true },
+  subfaction: { type: String, required: true },
   victory: {type: Boolean, required: false},
   wins: {type: Number, required: false},
   losses: {type: Number, required: false },
