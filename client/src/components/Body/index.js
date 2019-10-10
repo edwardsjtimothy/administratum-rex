@@ -12,6 +12,7 @@ export default class Body extends Component {
         loading: false,
         data: [],
         currentPlayer: [],
+        
     };
 
     componentDidMount () {
