@@ -6,9 +6,9 @@ const jwtSecret = require('./config/jwtConfig')
 const passport = require("passport")
 require('./config/passport');
 const app = express();
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 const User = require("./models/user");
-// process.env.PORT
+
 
 // Define middleware here
 app.use(express.urlencoded({ extended: true }));
