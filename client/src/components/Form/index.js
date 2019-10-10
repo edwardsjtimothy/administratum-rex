@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./form.css";
-import {Select} from "antd";
+import { Select } from "antd";
 import 'antd/es/select/style/css';
 import Axios from "axios";
 // import Radial from "../Radial";
 
-const {Option} = Select;
+const { Option } = Select;
 
 const factionData = ["Imperial", "Chaos", "Xenos"];
 const subData = {
@@ -16,60 +16,115 @@ const subData = {
 
 };
 
+let update = 0;
+let victory = true;
 export default class index extends Component {
-    constructor (props) {
+    constructor(props) {
         super(props)
     }
 
     state = {
         faction: subData[factionData[0]],
         subfaction: subData[factionData[0]][0],
+
     };
 
-
-    
-    submitUpdate =()=> {
-        let data = this.props.allData.data;
-        let player = this.props.allData.currentUser;
-        console.log(data);
-        console.log(player);
-
-        let playerGames = data.filter(game=> {
-            if (game.player === player) {
-                console.log(game)
-                return game
-            }
-        })
-        console.log(playerGames);
-
-    if (playerGames.length > 0) {
-        playerGames.forEach(game=>{
-            if (this.state.subfaction === game.sub) {
-                console.log(game.sub);
-                console.log("put");
-                Axios.put("stats/player", {
-                    wins: +1
-
-                });
-                return;
-            } else {
-                console.log("for each post");
-                    Axios.post("stats/player", {
-                        faction: this.state.faction,
-                        sub: this.state.subfaction,
-                        wins: +1
-                    });
-                    return;
-            };
-        });
-    } else {
-        console.log("non for each post")
-        Axios.post("stats/player", {
-            faction: this.state.faction,
-            sub: this.state.subfaction,
-            wins: +1
-        });
+    winOrLose = () => {
+        victory === true ?
+            victory = false 
+            :
+            victory = true
+        console.log(victory)
     }
+
+
+    submitUpdate = () => {
+        
+        let player = this.props.allData.currentUser;
+        Axios.post("/api/stats/player", {
+                        player: player,
+                        faction: "Imperial",
+                        sub: this.state.subfaction,
+                        wins: +1,
+                        losses: 0
+                    })
+
+        
+
+
+        // let data = this.props.allData.data;
+        // let player = this.props.allData.currentUser;
+        // console.log(data);
+        // console.log(player);
+
+        // let playerGames = data.filter(game => {
+        //     if (game.player === player) {
+        //         console.log(game)
+        //         return game
+        //     }
+        // })
+        // console.log(playerGames);
+
+        // if (victory === true) {
+        //     if (playerGames.length > 0) {
+        //         playerGames.forEach(game => {
+        //             if (this.state.subfaction === game.sub) {
+        //                 console.log(game.sub);
+        //                 console.log("put win");
+        //                 Axios.put("/api/stats/player", {
+        //                     wins: +1
+        //                 });
+        //                 return;
+        //             } else {
+        //                 console.log("for each post win");
+        //                 Axios.post("/api/stats/player", {
+        //                     faction: this.state.faction,
+        //                     sub: this.state.subfaction,
+        //                     wins: +1
+        //                 });
+        //                 return;
+        //             };
+        //         });
+        //     } else {
+        //         console.log("NFEP Win")
+        //         Axios.post("/api/stats/player", {
+        //             player: player,
+        //             faction: this.state.faction,
+        //             sub: this.state.subfaction,
+        //             wins: +1
+        //         })
+        //     }
+        // } else {
+        //     if (playerGames.length > 0) {
+        //         playerGames.forEach(game => {
+        //             if (this.state.subfaction === game.sub) {
+        //                 console.log(game.sub);
+        //                 console.log("put loss");
+        //                 Axios.put("/api/stats/player", {
+        //                     losses: +1
+        //                 });
+        //                 return;
+        //             } else {
+        //                 console.log("for each post loss");
+        //                 Axios.post("/api/stats/player", {
+        //                     faction: this.state.faction,
+        //                     sub: this.state.subfaction,
+        //                     losses: +1
+        //                 });
+        //                 return;
+        //             };
+        //         });
+        //     } else {
+        //         console.log("NFEP loss")
+        //         Axios.post("/api/stats/player", {
+        //             player: player,
+        //             faction: this.state.faction,
+        //             sub: this.state.subfaction,
+        //             losses: +1
+        //         });
+        //     };
+        // };
+
     };
 
     handleFactionChange = value => {
@@ -79,7 +134,7 @@ export default class index extends Component {
         });
     };
 
-    
+
     onSubChange = value => {
         this.setState({
             subfaction: value,
@@ -100,7 +155,7 @@ export default class index extends Component {
                                 defaultValue={factionData[0]}
                                 style={{ width: 300 }}
                                 onChange={this.handleFactionChange}
-                                
+
                             >
                                 {factionData.map(faction => (
                                     <Option key={faction}>{faction}</Option>
@@ -124,9 +179,10 @@ export default class index extends Component {
                             <Select id="win-lose" className="custom-select"
                                 defaultValue="I Won"
                                 style={{ width: 300 }}
+                                onChange={(e) => this.winOrLose(e)}
                             >
-                                <Option value="win">I Won</Option>
-                                <Option value="lose">I Lost</Option>
+                                <Option value={true}>I Won</Option>
+                                <Option value={false}>I Lost</Option>
                             </Select>
                         </div>
                         <div className="form-submit">
@@ -139,5 +195,5 @@ export default class index extends Component {
     }
 }
 
-    
+
 

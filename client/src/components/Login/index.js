@@ -1,11 +1,11 @@
 import React from "react";
 import Axios from "axios";
-import {Redirect, NavLink} from "react-router-dom";
+import { Redirect, NavLink } from "react-router-dom";
 
-class Login extends React.Component{
-    constructor(props){
+class Login extends React.Component {
+    constructor(props) {
         super(props)
-        this.state={
+        this.state = {
             username: "",
             password: "",
             loggedIn: false
@@ -14,23 +14,28 @@ class Login extends React.Component{
 
     handleChange = (event) => {
         this.setState({
-          [event.target.name]: event.target.value,
+            [event.target.name]: event.target.value,
         });
-      };
+    };
 
-    loginUser = (event)=>{
+    loginUser = (event) => {
         event.preventDefault();
-        Axios.post("/loginUser", {
-            username: this.state.username,
-            password: this.state.password,
-        }).then((res)=>{
-            localStorage.setItem('JWT', res.data.token);
-            localStorage.setItem("username", res.data.username);
-            this.setState({loggedIn: true})
-            console.log("logged in")
-        }).catch((err)=>{
-            console.log(err)
-        })
+        if (this.state.password !== this.state.confirmPassword) {
+            this.setState({ badPassword: true });
+        } else {
+            this.setState({ badPassword: false });
+            Axios.post("/loginUser", {
+                username: this.state.username,
+                password: this.state.password,
+            }).then((res) => {
+                localStorage.setItem('JWT', res.data.token);
+                localStorage.setItem("username", res.data.username);
+                this.setState({ loggedIn: true });
+                console.log("logged in")
+            }).catch((err) => {
+                console.log(err)
+            })
+        }
     }
 
     render() {
