@@ -16,8 +16,6 @@ const subData = {
 
 };
 
-let update = 0;
-let victory = true;
 export default class index extends Component {
     constructor(props) {
         super(props)
@@ -27,15 +25,16 @@ export default class index extends Component {
         factionData: factionData[0],
         faction: subData[factionData[0]],
         subfaction: subData[factionData[0]][0],
-
+        win: +1,
+        lose: +0
     };
 
-    winOrLose = () => {
-        victory === true ?
-            victory = false 
-            :
-            victory = true
-        console.log(victory)
+    winOrLose = (value) => {
+        value === !true ?
+        this.setState({ win: +1, lose: +0})
+        :
+        this.setState({ win: +0, lose: +1})
+        console.log(this.state);
     }
 
 
@@ -52,7 +51,7 @@ export default class index extends Component {
 
         console.log(playerGames);
 
-        
+
 
         // Axios.post("/api/stats/player", {
         //     player: player,
