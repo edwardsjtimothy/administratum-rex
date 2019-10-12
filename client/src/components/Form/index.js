@@ -41,27 +41,32 @@ export default class index extends Component {
 
     submitUpdate = () => {
         let player = this.props.allData.currentUser;
-        Axios.post("/api/stats/player", {
-            player: player,
-            faction: this.state.factionData,
-            subfaction: this.state.subfaction,
-            wins: +1,
-            losses: 0
-        })
-        
-        Axios.get("/api/stats");
+        let data = this.props.allData.data;
+        let subfaction = this.state.subfaction;
 
-        // let data = this.props.allData.data;
+        let playerGames = data.filter(game => {
+            if (game.player === player && game.subfaction === subfaction) {
+                return game
+            }
+        });
+
+        console.log(playerGames);
+
+        
+
+        // Axios.post("/api/stats/player", {
+        //     player: player,
+        //     faction: this.state.factionData,
+        //     subfaction: this.state.subfaction,
+        //     wins: +1,
+        //     losses: 0
+        // })
+        
+
         // let player = this.props.allData.currentUser;
         // console.log(data);
         // console.log(player);
 
-        // let playerGames = data.filter(game => {
-        //     if (game.player === player) {
-        //         console.log(game)
-        //         return game
-        //     }
-        // })
         // console.log(playerGames);
 
         // if (victory === true) {
