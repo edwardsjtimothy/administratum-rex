@@ -24,6 +24,7 @@ export default class index extends Component {
     }
 
     state = {
+        factionData: factionData[0],
         faction: subData[factionData[0]],
         subfaction: subData[factionData[0]][0],
 
@@ -42,7 +43,7 @@ export default class index extends Component {
         let player = this.props.allData.currentUser;
         Axios.post("/api/stats/player", {
             player: player,
-            faction: "Imperial",
+            faction: this.state.factionData,
             subfaction: this.state.subfaction,
             wins: +1,
             losses: 0
@@ -127,6 +128,7 @@ export default class index extends Component {
 
     handleFactionChange = value => {
         this.setState({
+            factionData: value,
             faction: subData[value],
             subfaction: subData[value][0],
         });

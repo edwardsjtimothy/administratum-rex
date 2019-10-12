@@ -21,7 +21,7 @@ module.exports = {
     db.Stats
       .update(
         {
-          player: req.body.player
+          player: req.body.player,
         },
         {
           $set: {
