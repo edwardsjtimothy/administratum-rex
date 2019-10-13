@@ -22,10 +22,10 @@ module.exports = {
       .update(
         {
           player: req.body.player,
+          subfaction: req.body.subfaction,
         },
         {
           $set: {
-            subfaction: req.body.subfaction,
             wins: req.body.wins,
             losses: req.body.losses
           }
