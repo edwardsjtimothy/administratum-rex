@@ -45,6 +45,7 @@ export default class index extends Component {
         :
         this.setState({ lose: this.state.lose +1})
 
+        
         console.log(this.state.win, this.state.lose);
 
         let playerGames = data.filter(game => {
