@@ -16,9 +16,6 @@ const subData = {
 
 };
 
-let wins = 0;
-let losses = 0;
-
 export default class index extends Component {
     constructor(props) {
         super(props)
@@ -35,61 +32,52 @@ export default class index extends Component {
         lose: 0
     };
 
-    getBeforeUpdate = () => {
-        Axios.get("/api/stats")
-        .then(res=> {
-            let data = res.data;  
-            this.setState({ data });
-        }); 
-    }
-
     submitUpdate = () => {
-        this.getBeforeUpdate();
         let player = this.props.allData.currentUser;
         let data = this.props.allData.data;
         let subfaction = this.state.subfaction;
         let vic = this.state.victory
-        console.log("victory" + vic);
-        console.log(this.state);
-
+        
+        this.setState({
+            win: 0,
+            lose: 0
+        });
+    
         if (vic === true || "I Won") {
-            wins++;
-            // this.setState({ win: this.state.win + wins})
+            this.setState({ win: 1})
         } else {
-            losses++;
-            // this.setState({ lose: this.state.lose + losses})
+            this.setState({ lose: 1})
         };
-
-        console.log(this.state.win, this.state.lose);
-
+        
+        
         let playerGames = data.filter(game => {
             if (game.player === player && game.subfaction === subfaction) {
                 return game
             }
         });
 
-        console.log(playerGames);
-
+        
         if (playerGames.length > 0) {
             console.log("playerGames exists")
+            let pLGWins = playerGames[0].wins;
+            let pLGLosses = playerGames[0].losses;
             Axios.put("/api/stats/player", {
                 player: player,
                 subfaction: this.state.subfaction,
             },
             {
-                wins: this.state.win,
-                losses: this.state.lose
+                wins: pLGWins + this.state.win,
+                losses: pLGLosses + this.state.lose
             });
-
+            
         } else {
             console.log("playerGames does not exist")
-            console.log(this.state.win, this.state.lose);
             Axios.post("/api/stats/player", {
                 player: player,
                 faction: this.state.factionData,
                 subfaction: this.state.subfaction,
-                wins: this.state.win + wins,
-                losses: this.state.lose + losses
+                wins: this.state.win,
+                losses: this.state.lose
             });
         };
     };
@@ -113,7 +101,6 @@ export default class index extends Component {
         this.setState({ 
             victory: value, 
         }); 
-        console.log(this.state.victory);
     };
 
     render() {
