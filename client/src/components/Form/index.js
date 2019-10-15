@@ -35,23 +35,22 @@ export default class index extends Component {
         lose: 0
     };
 
-    // getBeforeUpdate = () => {
-    //     Axios.get("/api/stats")
-    //     .then(res=> {
-    //         let data = res.data;  
-    //         this.setState({ data });
-    //         this.getBeforeUpdate();
-    //         console.log(data);
-    //     }); 
-    // }
+    getBeforeUpdate = () => {
+        Axios.get("/api/stats")
+        .then(res=> {
+            let data = res.data;  
+            this.setState({ data });
+        }); 
+    }
 
     submitUpdate = () => {
-        // this.getBeforeUpdate();
+        this.getBeforeUpdate();
         let player = this.props.allData.currentUser;
         let data = this.props.allData.data;
         let subfaction = this.state.subfaction;
         let vic = this.state.victory
         console.log("victory" + vic);
+        console.log(this.state);
 
         if (vic === true || "I Won") {
             wins++;
