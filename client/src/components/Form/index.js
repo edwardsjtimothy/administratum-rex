@@ -151,6 +151,7 @@ export default class index extends Component {
                                 style={{ width: 300 }}
                                 onChange={this.winOrLose}
                             >
+
                                 {/* {this.state.victory.map(vic => (
                                     <Option key={vic}>{vic}</Option>
                                 ))} */}
