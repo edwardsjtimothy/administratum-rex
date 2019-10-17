@@ -16,18 +16,20 @@ const subData = {
 
 };
 
+let nSWin = 0;
+let nSLose = 0;
+let victory = true; 
+console.log(victory);
 export default class index extends Component {
     constructor(props) {
         super(props)
-        
-        // this.winOrLose = this.winOrLose.bind(this);
     }
 
     state = {
         factionData: factionData[0],
         faction: subData[factionData[0]],
         subfaction: subData[factionData[0]][0],
-        victory: "I Won",
+        // victory: true,
         win: 0,
         lose: 0
     };
@@ -36,17 +38,16 @@ export default class index extends Component {
         let player = this.props.allData.currentUser;
         let data = this.props.allData.data;
         let subfaction = this.state.subfaction;
-        let vic = this.state.victory
+        // let vic = this.state.victory
         
-        this.setState({
-            win: 0,
-            lose: 0
-        });
-    
-        if (vic === true || "I Won") {
-            this.setState({ win: 1})
-        } else {
-            this.setState({ lose: 1})
+        if (victory === true) {
+            nSWin = 1;
+            nSLose = 0;
+            console.log("win" + nSWin, "lose" + nSLose)
+        } else if (victory === false) {
+            nSLose = 1;
+            nSWin = 0;
+            console.log("win" + nSWin, "lose" + nSLose)
         };
         
         
@@ -61,13 +62,18 @@ export default class index extends Component {
             console.log("playerGames exists")
             let pLGWins = playerGames[0].wins;
             let pLGLosses = playerGames[0].losses;
+            console.log(pLGWins);
+            console.log(pLGLosses);
+            console.log(this.state.win);
             Axios.put("/api/stats/player", {
                 player: player,
                 subfaction: this.state.subfaction,
             },
             {
-                wins: pLGWins + this.state.win,
-                losses: pLGLosses + this.state.lose
+                $set: {
+                    wins: pLGWins + this.state.win,
+                    losses: pLGLosses + this.state.lose
+                  }
             });
             
         } else {
@@ -98,9 +104,12 @@ export default class index extends Component {
     };
 
     winOrLose = value => {
-        this.setState({ 
-            victory: value, 
-        }); 
+
+        victory = value;
+        console.log("clicked " + victory);
+        // this.setState({ 
+        //     victory: value, 
+        // }); 
     };
 
     render() {
@@ -140,11 +149,8 @@ export default class index extends Component {
                         <div className="select-con col-sm-10">
                             <Select id="win-lose" className="custom-select"
                                 style={{ width: 300 }}
-                                defaultValue="I Won"
-                                value={this.state.victory}
                                 onChange={this.winOrLose}
                             >
-
                                 {/* {this.state.victory.map(vic => (
                                     <Option key={vic}>{vic}</Option>
                                 ))} */}
