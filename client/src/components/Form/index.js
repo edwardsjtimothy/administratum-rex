@@ -105,7 +105,7 @@ export default class index extends Component {
 
     winOrLose = value => {
 
-        victory = value;
+        victory = (value === "true");
         console.log("clicked " + victory);
         // this.setState({ 
         //     victory: value, 
