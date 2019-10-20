@@ -29,16 +29,12 @@ export default class index extends Component {
         factionData: factionData[0],
         faction: subData[factionData[0]],
         subfaction: subData[factionData[0]][0],
-        // victory: true,
-        win: 0,
-        lose: 0
     };
 
     submitUpdate = () => {
         let player = this.props.allData.currentUser;
         let data = this.props.allData.data;
         let subfaction = this.state.subfaction;
-        // let vic = this.state.victory
         
         if (victory === true) {
             nSWin = 1;
@@ -59,21 +55,14 @@ export default class index extends Component {
 
         
         if (playerGames.length > 0) {
-            console.log("playerGames exists")
+            console.log("playerGames exists");
             let pLGWins = playerGames[0].wins;
             let pLGLosses = playerGames[0].losses;
-            console.log(pLGWins);
-            console.log(pLGLosses);
-            console.log(this.state.win);
             Axios.put("/api/stats/player", {
                 player: player,
                 subfaction: this.state.subfaction,
-            },
-            {
-                $set: {
-                    wins: pLGWins + this.state.win,
-                    losses: pLGLosses + this.state.lose
-                  }
+                wins: pLGWins + nSWin,
+                losses: pLGLosses + nSLose
             });
             
         } else {
@@ -82,8 +71,8 @@ export default class index extends Component {
                 player: player,
                 faction: this.state.factionData,
                 subfaction: this.state.subfaction,
-                wins: this.state.win,
-                losses: this.state.lose
+                wins: nSWin,
+                losses: nSLose
             });
         };
     };
@@ -104,12 +93,8 @@ export default class index extends Component {
     };
 
     winOrLose = value => {
-
         victory = (value === "true");
         console.log("clicked " + victory);
-        // this.setState({ 
-        //     victory: value, 
-        // }); 
     };
 
     render() {
