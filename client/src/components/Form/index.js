@@ -85,7 +85,6 @@ export default class index extends Component {
         });
     };
 
-
     onSubChange = value => {
         this.setState({
             subfaction: value,
@@ -98,7 +97,6 @@ export default class index extends Component {
     };
 
     render() {
-        // const { faction } = this.state;
         return (
             <div className="new-record">
                 {/* <Radial></Radial> */}
@@ -136,11 +134,6 @@ export default class index extends Component {
                                 style={{ width: 300 }}
                                 onChange={this.winOrLose}
                             >
-
-                                {/* {this.state.victory.map(vic => (
-                                    <Option key={vic}>{vic}</Option>
-                                ))} */}
-
                                 <Option key={true}>I Won</Option>
                                 <Option key={false}>I Lost</Option>
                             </Select>
