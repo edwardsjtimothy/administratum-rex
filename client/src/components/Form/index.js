@@ -76,6 +76,7 @@ export default class index extends Component {
             });
         };
     };
+    
 
     handleFactionChange = value => {
         this.setState({
