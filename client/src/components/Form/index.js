@@ -76,7 +76,7 @@ export default class index extends Component {
             });
         };
     };
-    
+
 
     handleFactionChange = value => {
         this.setState({
@@ -86,6 +86,7 @@ export default class index extends Component {
         });
     };
 
+    
     onSubChange = value => {
         this.setState({
             subfaction: value,
