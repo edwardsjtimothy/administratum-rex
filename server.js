@@ -8,6 +8,7 @@ require('./config/passport');
 const app = express();
 const PORT = process.env.PORT || 3001;
 const User = require("./models/user");
+const cors = require("cors");
 
 
 // Define middleware here
@@ -17,6 +18,9 @@ app.use(express.json());
 if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
+
+//enable CORS
+app.use(cors());
 
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
