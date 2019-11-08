@@ -31,7 +31,7 @@ export default class Body extends Component {
         }); 
     };
 
-    // get route for all data 
+    // get route to retreive all records and filter by logged in account
     
     yourStats=()=> {
         Axios.get("/api/stats")

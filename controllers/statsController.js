@@ -11,7 +11,7 @@ module.exports = {
 
   update: function (req, res) {
     db.Stats
-      .update(
+      .updateOne(
         {
           player: req.body.player,
           subfaction: req.body.subfaction,
