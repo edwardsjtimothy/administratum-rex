@@ -5,7 +5,6 @@ router.route("/")
   .get(statsController.findAll)
 
 router.route("/player")
-  .get(statsController.findOne)
   .post(statsController.create)
   .put(statsController.update);
   

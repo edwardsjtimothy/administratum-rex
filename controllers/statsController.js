@@ -9,14 +9,6 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
 
-  findOne: function (req, res) {
-    db.Stats
-      .find({ player: "Tim" })
-      .sort({ date: -1 })
-      .then(dbModel => res.json(dbModel))
-      .catch(err => res.status(422).json(err));
-  },
-
   update: function (req, res) {
     db.Stats
       .update(

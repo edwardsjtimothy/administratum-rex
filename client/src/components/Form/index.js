@@ -63,6 +63,9 @@ export default class index extends Component {
                 subfaction: this.state.subfaction,
                 wins: pLGWins + nSWin,
                 losses: pLGLosses + nSLose
+            })
+            .then(res => {
+                console.log(res);
             });
             
         } else {
