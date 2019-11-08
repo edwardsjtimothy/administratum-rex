@@ -15,6 +15,8 @@ export default class Body extends Component {
         
     };
 
+    //inital state of home screen w/ loading animation and get call
+    
     componentDidMount () {
         this.setState({ loading: true});
         let currentUser = localStorage.getItem("username");
@@ -29,13 +31,14 @@ export default class Body extends Component {
         }); 
     };
 
+    // get route for all data 
+    
     yourStats=()=> {
         Axios.get("/api/stats")
         .then(res=> {
             let data = res.data;  
             this.setState({ data });
             this.setState({ loading: false});
-            this.yourStats();
         }); 
        let data = this.state.data;
        let player = data.filter((game)=>{
@@ -43,6 +46,8 @@ export default class Body extends Component {
        })
        this.setState({ currentPlayer: player });
     };
+
+    // logic for focusing on tabs
 
     tabFocus(e) {
         let clicked = e.target.id;
