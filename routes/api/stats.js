@@ -4,7 +4,7 @@ const statsController = require("../../controllers/statsController");
 router.route("/")
   .get(statsController.findAll)
 
-router.route("/player")
+router.route("/create")
   .post(statsController.create)
 
  router.route("/update") 

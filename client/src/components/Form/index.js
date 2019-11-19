@@ -69,7 +69,7 @@ export default class index extends Component {
             
         } else {
             console.log("playerGames does not exist")
-            Axios.post("/api/stats/player", {
+            Axios.post("/api/stats/create", {
                 player: player,
                 faction: this.state.factionData,
                 subfaction: this.state.subfaction,
