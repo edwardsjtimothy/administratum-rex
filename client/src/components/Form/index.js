@@ -10,7 +10,7 @@ const { Option } = Select;
 const factionData = ["Imperial", "Chaos", "Xenos"];
 const subData = {
 
-    Imperial: ["Astra Militarum", "White Scars", "Ultramarines", "Salamanders", "Imperial Fists", "Iron Hands", "Space Wolves", "Blood Angels", "Death Watch", "Grey Knights", "Adeptus Custodes", "Adeptus Soroitas"],
+    Imperial: ["Astra Militarum", "White Scars", "Ultramarines", "Salamanders", "Imperial Fists", "Iron Hands", "Space Wolves", "Blood Angels", "Death Watch", "Grey Knights", "Adeptus Custodes", "Adepta Soroitas"],
     Chaos: ["Daemons of Nurgle", "Daemons of Khorne", "Daemons of Slaanesh", "Daemons of Tzeentch", "Thousand Sons", "Death Guard", "Emperor's Children", "Black Legion", "World Eaters"],
     Xenos: ["Aeldari", "Necrons", "Genestealer Cults", "Tyranids", "Tau", "Orks", "Harlequins", "Drukahri"],
 
@@ -58,15 +58,14 @@ export default class index extends Component {
             console.log("playerGames exists");
             let pLGWins = playerGames[0].wins;
             let pLGLosses = playerGames[0].losses;
-            Axios.put("/api/stats/player", {
+            Axios.put("/api/stats/update", {
                 player: player,
                 subfaction: this.state.subfaction,
                 wins: pLGWins + nSWin,
                 losses: pLGLosses + nSLose
             })
-            .then(res => {
-                console.log(res);
-            });
+            .then((res) => console.log(res.data))
+            .catch((err) => console.log(err));
             
         } else {
             console.log("playerGames does not exist")

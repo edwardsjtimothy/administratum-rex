@@ -6,6 +6,8 @@ router.route("/")
 
 router.route("/player")
   .post(statsController.create)
-  .put(statsController.update);
+
+ router.route("/update") 
+  .put(statsController.update)
   
 module.exports = router;
