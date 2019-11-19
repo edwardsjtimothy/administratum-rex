@@ -7,6 +7,7 @@ import Axios from "axios";
 
 const { Option } = Select;
 
+//data for selects 
 const factionData = ["Imperial", "Chaos", "Xenos"];
 const subData = {
 
@@ -16,10 +17,11 @@ const subData = {
 
 };
 
+//varibles for determining whether or not a record update was for a win or a loss. 
 let nSWin = 0;
 let nSLose = 0;
 let victory = true; 
-console.log(victory);
+
 export default class index extends Component {
     constructor(props) {
         super(props)
@@ -31,29 +33,29 @@ export default class index extends Component {
         subfaction: subData[factionData[0]][0],
     };
 
+    //update/create player record 
     submitUpdate = () => {
         let player = this.props.allData.currentUser;
         let data = this.props.allData.data;
         let subfaction = this.state.subfaction;
-        
+
+        //logic for determining whether 1 should be added to wins or losses in db. 
         if (victory === true) {
             nSWin = 1;
             nSLose = 0;
-            console.log("win" + nSWin, "lose" + nSLose)
         } else if (victory === false) {
             nSLose = 1;
             nSWin = 0;
-            console.log("win" + nSWin, "lose" + nSLose)
         };
         
-        
+        //variable used to determine whether or not a record already exists for the selected faction and subfaction
         let playerGames = data.filter(game => {
             if (game.player === player && game.subfaction === subfaction) {
                 return game
             }
         });
 
-        
+        //logic for determining whether a new record should be created or an existing record updated
         if (playerGames.length > 0) {
             console.log("playerGames exists");
             let pLGWins = playerGames[0].wins;
@@ -79,7 +81,7 @@ export default class index extends Component {
         };
     };
 
-
+    //logic to handle select functionality 
     handleFactionChange = value => {
         this.setState({
             factionData: value,
