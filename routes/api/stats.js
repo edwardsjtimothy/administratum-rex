@@ -4,10 +4,10 @@ const statsController = require("../../controllers/statsController");
 router.route("/")
   .get(statsController.findAll)
 
-router.route("/create")
+router.route("/player")
   .post(statsController.create)
-
- router.route("/update") 
   .put(statsController.update)
+
+//  router.route("/update") 
   
 module.exports = router;

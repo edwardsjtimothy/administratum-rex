@@ -60,7 +60,7 @@ export default class index extends Component {
             console.log("playerGames exists");
             let pLGWins = playerGames[0].wins;
             let pLGLosses = playerGames[0].losses;
-            Axios.put("/api/stats/update", {
+            Axios.put("/api/stats/player", {
                 player: player,
                 subfaction: this.state.subfaction,
                 wins: pLGWins + nSWin,
@@ -69,7 +69,7 @@ export default class index extends Component {
             
         } else {
             console.log("playerGames does not exist")
-            Axios.post("/api/stats/create", {
+            Axios.post("/api/stats/player", {
                 player: player,
                 faction: this.state.factionData,
                 subfaction: this.state.subfaction,
