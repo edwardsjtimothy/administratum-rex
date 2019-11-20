@@ -23,6 +23,7 @@ module.exports = {
           }
         }
       )
+      res.send("update complete");
   },
 
   create: function (req, res) {
@@ -36,5 +37,6 @@ module.exports = {
           losses: req.body.losses
         }
       )
+      res.send("create complete");
   },
 };

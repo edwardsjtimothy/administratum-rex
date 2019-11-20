@@ -23,11 +23,10 @@ export default class Body extends Component {
         this.setState({ currentUser: currentUser })
         Axios.get("/api/stats")
         .then(res=> {
-            let data = res.data; 
-            console.log(data);   
+            let data = res.data;   
             this.setState({ data });
             this.setState({ loading: false});
-            this.yourStats();
+            // this.yourStats();
         }); 
     };
 
@@ -42,7 +41,7 @@ export default class Body extends Component {
         }); 
        let data = this.state.data;
        let player = data.filter((game)=>{
-        return game.player === localStorage.getItem("username"); //    this is where logged in user should go
+        return game.player === localStorage.getItem("username"); 
        })
        this.setState({ currentPlayer: player });
     };
