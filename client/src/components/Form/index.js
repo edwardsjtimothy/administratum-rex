@@ -66,8 +66,6 @@ export default class index extends Component {
                 wins: pLGWins + nSWin,
                 losses: pLGLosses + nSLose
             })
-            .then((res) => console.log(res.data))
-            .catch((err) => console.log(err));
             
         } else {
             console.log("playerGames does not exist")

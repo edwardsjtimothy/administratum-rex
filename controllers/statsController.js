@@ -21,9 +21,13 @@ module.exports = {
             wins: req.body.wins,
             losses: req.body.losses
           }
+        }, (err) => {
+          if (err) {
+            throw err;
+          }
         }
       )
-      res.send("update complete");
+    res.send("update complete");
   },
 
   create: function (req, res) {
@@ -35,6 +39,10 @@ module.exports = {
           subfaction: req.body.subfaction,
           wins: req.body.wins,
           losses: req.body.losses
+        }, (err) => {
+          if (err) {
+            throw err;
+          }
         }
       )
       res.send("create complete");
