@@ -32,7 +32,7 @@ passport.use(
             User.create({
               username,
               password: hashedPassword,
-              email: req.body.email,
+              // email: req.body.email,
             }).then(user => {
               console.log('user created');
               return done(null, user);
